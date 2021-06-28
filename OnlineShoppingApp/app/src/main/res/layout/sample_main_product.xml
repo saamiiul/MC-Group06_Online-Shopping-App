@@ -23,7 +23,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/foodImageView"
+                android:id="@+id/productImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -37,7 +37,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/foodName"
+                    android:id="@+id/productName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
@@ -63,7 +63,7 @@
                         android:textColor="@color/red" />
 
                     <TextView
-                        android:id="@+id/foodPrice"
+                        android:id="@+id/productPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Price"
@@ -72,7 +72,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/foodDescription"
+                    android:id="@+id/productDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
