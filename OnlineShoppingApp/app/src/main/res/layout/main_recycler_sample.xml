@@ -30,9 +30,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="#E91E63"
+                android:background="#F84280"
                 android:gravity="center"
-                android:text="Pizza"
+                android:text="T-Shirt"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
         </LinearLayout>
