@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/detailImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="0dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/tshirt1" />
+
+            <TextView
+                android:id="@+id/DetailItemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:padding="5dp"
+                android:text="T-Shirt"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="#D3D2D2"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/Subtract"
+                    android:layout_width="30dp"
+                    android:src="@drawable/negative"
+                    android:layout_height="wrap_content"
+                    android:onClick="Decrement" />
+
+                <TextView
+                    android:id="@+id/Quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginRight="2dp"
+                    android:text="1"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/Add"
+                    android:layout_width="30dp"
+                    android:src="@drawable/plus"
+                    android:layout_height="wrap_content"
+                    android:onClick="Increment" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/detailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="9dp"
+            android:gravity="center"
+            android:text="@string/descriptionProduct" />
+
+        <EditText
+            android:id="@+id/nameBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:fontFamily="@font/allerta"
+            android:hint="Your Name"
+            android:inputType="textPersonName"
+            android:padding="9dp" />
+
+        <EditText
+            android:id="@+id/phoneBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:padding="9dp" />
+
+        <TextView
+            android:id="@+id/detailPriceHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="Price"
+            android:textStyle="bold"
+            android:textColor="#0B0A0A" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/detailPriceTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs."
+                android:textColor="#EC1111"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detailPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15"
+                android:textColor="#EC1111"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/insertButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_background"
+            android:text="Order Now"
+            app:backgroundTint="#FFC107" />
+
+    </LinearLayout>
+
+</LinearLayout>

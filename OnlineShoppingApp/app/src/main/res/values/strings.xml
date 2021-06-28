@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OnlineShoppingApp</string>
+    <string name="descriptionProduct"> US Polo </string>
 </resources>
