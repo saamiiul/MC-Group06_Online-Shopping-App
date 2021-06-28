@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <font-family xmlns:app="http://schemas.android.com/apk/res-auto"
         app:fontProviderAuthority="com.google.android.gms.fonts"
@@ -5,3 +6,12 @@
         app:fontProviderQuery="Allerta"
         app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
 </font-family>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:fontProviderAuthority="com.google.android.gms.fonts"
+        app:fontProviderPackage="com.google.android.gms"
+        app:fontProviderQuery="Allerta"
+        app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
+</font-family>
+>>>>>>> dc06e10e619bd3dc650c4b8337f91222f00bf4c3

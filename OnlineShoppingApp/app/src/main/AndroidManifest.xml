@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineShoppingApp">
+<<<<<<< HEAD
         <activity android:name=".OrderActivity"></activity>
         <activity android:name=".DetailActivity" />
+=======
+        <activity android:name=".DetailActivity"></activity>
+>>>>>>> dc06e10e619bd3dc650c4b8337f91222f00bf4c3
         <activity android:name=".MainPage" />
         <activity android:name=".MainActivity">
             <intent-filter>

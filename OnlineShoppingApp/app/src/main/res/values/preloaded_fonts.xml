@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/allerta</item>
     </array>
 </resources>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/allerta</item>
+    </array>
+</resources>
+>>>>>>> dc06e10e619bd3dc650c4b8337f91222f00bf4c3
