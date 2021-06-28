@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-package org.samiulhaq.onlineshoppingapp;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import org.samiulhaq.onlineshoppingapp.databinding.ActivityMainBinding;
-
-public class MainActivity extends AppCompatActivity {
-
-    ActivityMainBinding mainBinding;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mainBinding=ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(mainBinding.getRoot());
-
-
-    }
-=======
 package org.samiulhaq.onlineshoppingapp;
 
 import androidx.annotation.RequiresApi;
@@ -49,7 +29,35 @@ public class MainActivity extends AppCompatActivity {
         mainBinding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
 
+        ArrayList<MainItemsModel> itemList= new ArrayList<>();
+        itemList.add(new MainItemsModel(R.drawable.tshirts,"TShirts"));
+        itemList.add(new MainItemsModel(R.drawable.sports,"Sports"));
+        itemList.add(new MainItemsModel(R.drawable.female_dresses,"Female Dresses"));
+        itemList.add(new MainItemsModel(R.drawable.sweather,"Sweaters"));
+        itemList.add(new MainItemsModel(R.drawable.mobiles,"Mobiles"));
+        itemList.add(new MainItemsModel(R.drawable.glasses,"Glasses"));
+        itemList.add(new MainItemsModel(R.drawable.shoess,"Shoes"));
+        itemList.add(new MainItemsModel(R.drawable.purses_bags,"Bags"));
+        itemList.add(new MainItemsModel(R.drawable.laptops,"Laptops"));
+        itemList.add(new MainItemsModel(R.drawable.headphoness,"Headphones"));
 
+        MainItemsAdapter mainItemsAdapter= new MainItemsAdapter(itemList,this);
+        mainBinding.MainItemsRecyclerView.setAdapter(mainItemsAdapter);
+
+        GridLayoutManager gridLayoutManager=new GridLayoutManager(this,2);
+        mainBinding.MainItemsRecyclerView.setLayoutManager(gridLayoutManager);
+
+        mainBinding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mainItemsAdapter.getFilter().filter(newText.toString());
+                return false;
+            }
+        });
     }
->>>>>>> 2521da4e5c958924e9dc36c6b2f9edd26ac88543
 }
