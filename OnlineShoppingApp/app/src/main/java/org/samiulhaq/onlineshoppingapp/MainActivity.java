@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Notification notification = new Notification.Builder(MainActivity.this)
                 .setContentTitle("Champs")
                 .setContentText("You are at right place. Order what you like.")
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(R.drawable.sbag)
                 .setChannelId(CHANNEL_ID)
                 .build();
 

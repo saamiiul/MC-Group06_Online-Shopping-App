@@ -31,61 +31,28 @@ public class DetailActivity extends AppCompatActivity {
         detailBinding.detailPrice.setText(String.format("%d",productPrice));
         detailBinding.detailDescription.setText(productDescription);
 
-        DBHelper dbHelper=new DBHelper(this);
-        if(getIntent().getIntExtra("type",1)==1){
-            detailBinding.insertButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    boolean isInserted=dbHelper.insertOrder(
-                            detailBinding.nameBox.getText().toString(),
-                            detailBinding.phoneBox.getText().toString(),
-                            productPrice,
-                            productImage,
-                            Integer.parseInt(detailBinding.Quantity.getText().toString()),
-                            productDescription,
-                            productName
-                    );
-                    if(isInserted){
-                        Toast.makeText(DetailActivity.this,"inserted successfully",Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(DetailActivity.this,"failed",Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        } else{
-            int orderId= getIntent().getIntExtra("id",0);
-            Cursor cursor= dbHelper.getOrderById(orderId);
-            int image=cursor.getInt(4);
-            detailBinding.detailImage.setImageResource(image);
-            detailBinding.detailPrice.setText(String.format("%d",cursor.getInt(3)));
-            detailBinding.DetailItemName.setText(cursor.getString(6));
-            detailBinding.detailDescription.setText(cursor.getString(5));
-            detailBinding.nameBox.setText(cursor.getString(1));
-            detailBinding.phoneBox.setText(cursor.getString(2));
-            detailBinding.insertButton.setText("Update Now");
-            detailBinding.insertButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    boolean isUpdated= dbHelper.updateOrder(
-                            detailBinding.nameBox.getText().toString(),
-                            detailBinding.phoneBox.getText().toString(),
-                            Integer.parseInt(detailBinding.detailPrice.getText().toString()),
-                            image,
-                            Integer.parseInt(detailBinding.Quantity.getText().toString()),
-                            detailBinding.detailDescription.getText().toString(),
-                            detailBinding.DetailItemName.getText().toString(),
-                            orderId
-                    );
-                    if (isUpdated){
-                        Toast.makeText(DetailActivity.this,"Updated",Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(DetailActivity.this,"Not Updated",Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
+        DBHelper dbHelper= new DBHelper(this);
+        detailBinding.insertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 boolean isInserted= dbHelper.insertOrder(
+                         detailBinding.nameBox.getText().toString(),
+                         detailBinding.phoneBox.getText().toString(),
+                         productPrice,
+                         productImage,
+                         Integer.parseInt(detailBinding.Quantity.getText().toString()),
+                         productDescription,
+                         productName
+                 );
+                 if (isInserted){
+                     Toast.makeText(DetailActivity.this,"Data inserted",Toast.LENGTH_SHORT).show();
+                 }
+                 else{
+                     Toast.makeText(DetailActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                 }
+            }
+        });
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu cart) {

@@ -8,55 +8,55 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-
 import org.samiulhaq.onlineshoppingapp.Models.OrderModel;
 
 import java.util.ArrayList;
-public class DBHelper extends SQLiteOpenHelper {
+
+public class DBHelper extends SQLiteOpenHelper{
 
     final static String DBNAME = "mydatabase.db";
     final static int DBVersion = 1;
-
     public DBHelper(@Nullable Context context) {
         super(context, DBNAME, null, DBVersion);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(
-                "create table orders " +
-                        "(id integer primary key autoincrement," +
-                        "name text," +
-                        "phone text," +
-                        "price int," +
-                        "image int," +
-                        "quantity integer," +
-                        "description text," +
-                        "productName text)"
+                "create table orders"+
+                        "(id integer primary key autoincrement,"+
+                        "name text,"+
+                        "phone text,"+
+                        "price int,"+
+                        "image int,"+
+                        "quantity int,"+
+                        "description,"+
+                        "productName)"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP table if exists orders");
+        db.execSQL("Drop table if exists orders");
         onCreate(db);
     }
-
-    public boolean insertOrder(String name, String phone, int price, int image, int quantity, String desc, String productName) {
-
-        SQLiteDatabase database = getReadableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("name", name);
-        values.put("phone", phone);
-        values.put("price", price);
-        values.put("image", image);
-        values.put("quantity", quantity);
-        values.put("description", desc);
-        values.put("productName", productName);
-        long id = database.insert("orders", null, values);
-        if (id <= 0) {
+    public boolean insertOrder(String name, String phone, int price, int image,int quan, String desc, String productName){
+        SQLiteDatabase database= getReadableDatabase();
+        ContentValues values= new ContentValues();
+        values.put("name",name);
+        values.put("phone",phone);
+        values.put("price",price);
+        values.put("image",image);
+        values.put("quantity",quan);
+        values.put("description",desc);
+        values.put("productName",productName);
+        long id= database.insert("orders",null,values);
+        if(id<=0)
+        {
             return false;
-        } else {
+        }
+        else{
             return true;
         }
     }
@@ -78,36 +78,8 @@ public class DBHelper extends SQLiteOpenHelper {
         database.close();
         return orders;
     }
-    public Cursor getOrderById(int id){
-        SQLiteDatabase database =this.getWritableDatabase();
-        Cursor cursor =  database.rawQuery("Select * from orders",null);
-        if(cursor!=null){
-            cursor.moveToFirst();
-        }
-
-        return cursor;
-    }
-    public boolean updateOrder(String name, String phone, int price, int image, int quantity, String desc, String productName,int id) {
-
-        SQLiteDatabase database = getReadableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("name", name);
-        values.put("phone", phone);
-        values.put("price", price);
-        values.put("image", image);
-        values.put("quantity", quantity);
-        values.put("description", desc);
-        values.put("productName", productName);
-        long row = database.update("orders",values,"id="+id,null);
-        if (row <= 0) {
-            return false;
-        } else {
-            return true;
-        }
-    }
     public int deleteOrder(String id){
         SQLiteDatabase database =this.getWritableDatabase();
         return database.delete("orders","id="+id,null);
     }
 }
-
