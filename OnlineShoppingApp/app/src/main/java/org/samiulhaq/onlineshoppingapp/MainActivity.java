@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         itemList.add(new MainItemsModel(R.drawable.shoess,"Shoes"));
         itemList.add(new MainItemsModel(R.drawable.purses_bags,"Bags"));
         itemList.add(new MainItemsModel(R.drawable.laptops,"Laptops"));
-        itemList.add(new MainItemsModel(R.drawable.headphoness,"Headphones"));
+        itemList.add(new MainItemsModel(R.drawable.headphoness,"HeadPhones"));
 
         MainItemsAdapter mainItemsAdapter= new MainItemsAdapter(itemList,this);
         mainBinding.MainItemsRecyclerView.setAdapter(mainItemsAdapter);
@@ -59,6 +59,31 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void ShowNotification() {
+        int notifyID = 1;
+        String CHANNEL_ID = "my_channel_01";
+        CharSequence name = getString(R.string.channel_name);
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+        Notification notification = new Notification.Builder(MainActivity.this)
+                .setContentTitle("Champs")
+                .setContentText("You are at right place. Order what you like.")
+                .setSmallIcon(R.drawable.logo)
+                .setChannelId(CHANNEL_ID)
+                .build();
+
+        NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        notificationManager.createNotificationChannel(mChannel);
+
+        notificationManager.notify(1, notification);
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    protected void onStart()
+    {
+        super.onStart();
+        ShowNotification();
     }
     @Override
     public void onBackPressed() {

@@ -21,15 +21,15 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         detailBinding= ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(detailBinding.getRoot());
-        final int foodImage= getIntent().getIntExtra("foodImage",0);
-        final int foodPrice= Integer.parseInt(getIntent().getStringExtra("foodPrice"));
-        final String foodName= getIntent().getStringExtra("foodName");
-        final String foodDescription= getIntent().getStringExtra("foodDesc");
+        final int productImage= getIntent().getIntExtra("productImage",0);
+        final int productPrice= Integer.parseInt(getIntent().getStringExtra("productPrice"));
+        final String productName= getIntent().getStringExtra("productName");
+        final String productDescription= getIntent().getStringExtra("productDesc");
 
-        detailBinding.detailImage.setImageResource(foodImage);
-        detailBinding.DetailItemName.setText(foodName);
-        detailBinding.detailPrice.setText(String.format("%d",foodPrice));
-        detailBinding.detailDescription.setText(foodDescription );
+        detailBinding.detailImage.setImageResource(productImage);
+        detailBinding.DetailItemName.setText(productName);
+        detailBinding.detailPrice.setText(String.format("%d",productPrice));
+        detailBinding.detailDescription.setText(productDescription);
 
         DBHelper dbHelper=new DBHelper(this);
         if(getIntent().getIntExtra("type",1)==1){
@@ -39,11 +39,11 @@ public class DetailActivity extends AppCompatActivity {
                     boolean isInserted=dbHelper.insertOrder(
                             detailBinding.nameBox.getText().toString(),
                             detailBinding.phoneBox.getText().toString(),
-                            foodPrice,
-                            foodImage,
+                            productPrice,
+                            productImage,
                             Integer.parseInt(detailBinding.Quantity.getText().toString()),
-                            foodDescription,
-                            foodName
+                            productDescription,
+                            productName
                     );
                     if(isInserted){
                         Toast.makeText(DetailActivity.this,"inserted successfully",Toast.LENGTH_SHORT).show();

@@ -50,10 +50,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.viewHolder> im
             @Override
             public void onClick(View v) {
                 Intent intent1= new Intent(context, DetailActivity.class);
-                intent1.putExtra("foodImage",model1.getImage());
-                intent1.putExtra("foodName",model1.getName());
-                intent1.putExtra("foodDesc",model1.getDescription());
-                intent1.putExtra("foodPrice",model1.getPrice());
+                intent1.putExtra("productImage",model1.getImage());
+                intent1.putExtra("productName",model1.getName());
+                intent1.putExtra("productDesc",model1.getDescription());
+                intent1.putExtra("productPrice",model1.getPrice());
                 context.startActivity(intent1);
             }
         });

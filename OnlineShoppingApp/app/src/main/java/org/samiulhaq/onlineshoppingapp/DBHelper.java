@@ -12,11 +12,10 @@ import androidx.annotation.Nullable;
 import org.samiulhaq.onlineshoppingapp.Models.OrderModel;
 
 import java.util.ArrayList;
-
 public class DBHelper extends SQLiteOpenHelper {
 
     final static String DBNAME = "mydatabase.db";
-    final static int DBVersion = 2;
+    final static int DBVersion = 1;
 
     public DBHelper(@Nullable Context context) {
         super(context, DBNAME, null, DBVersion);
@@ -29,11 +28,11 @@ public class DBHelper extends SQLiteOpenHelper {
                         "(id integer primary key autoincrement," +
                         "name text," +
                         "phone text," +
-                        "price intt," +
+                        "price int," +
                         "image int," +
                         "quantity integer," +
                         "description text," +
-                        "foodName text)"
+                        "productName text)"
         );
     }
 
@@ -61,18 +60,17 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-
-    public ArrayList<OrderModel> getOrders() {
-        ArrayList<OrderModel> orders = new ArrayList<>();
+    public ArrayList<OrderModel> getOrders(){
+        ArrayList<OrderModel> orders= new ArrayList<>();
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("Select id,productName,image,price from orders", null);
-        if (cursor.moveToFirst()) {
-            while (cursor.moveToNext()) {
+        Cursor cursor =  database.rawQuery("Select id,productName,image,price from orders",null);
+        if(cursor.moveToFirst()){
+            while (cursor.moveToNext()){
                 OrderModel model = new OrderModel();
-                model.setOrderNumber(cursor.getInt(0) + "");
+                model.setOrderNumber(cursor.getInt(0)+"");
                 model.setSoldItemName(cursor.getString(1));
                 model.setOrderImage(cursor.getInt(2));
-                model.setOrderPrice(cursor.getInt(3) + "");
+                model.setOrderPrice(cursor.getInt(3)+"");
                 orders.add(model);
             }
         }
@@ -80,18 +78,16 @@ public class DBHelper extends SQLiteOpenHelper {
         database.close();
         return orders;
     }
-
-    public Cursor getOrderById(int id) {
-        SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("Select * from orders", null);
-        if (cursor != null) {
+    public Cursor getOrderById(int id){
+        SQLiteDatabase database =this.getWritableDatabase();
+        Cursor cursor =  database.rawQuery("Select * from orders",null);
+        if(cursor!=null){
             cursor.moveToFirst();
         }
 
         return cursor;
     }
-
-    public boolean updateOrder(String name, String phone, int price, int image, int quantity, String desc, String productName, int id) {
+    public boolean updateOrder(String name, String phone, int price, int image, int quantity, String desc, String productName,int id) {
 
         SQLiteDatabase database = getReadableDatabase();
         ContentValues values = new ContentValues();
@@ -102,17 +98,16 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("quantity", quantity);
         values.put("description", desc);
         values.put("productName", productName);
-        long row = database.update("orders", values, "id=" + id, null);
+        long row = database.update("orders",values,"id="+id,null);
         if (row <= 0) {
             return false;
         } else {
             return true;
         }
     }
-
-    public int deleteOrder(String id) {
-        SQLiteDatabase database = this.getWritableDatabase();
-        return database.delete("orders", "id=" + id, null);
+    public int deleteOrder(String id){
+        SQLiteDatabase database =this.getWritableDatabase();
+        return database.delete("orders","id="+id,null);
     }
 }
 

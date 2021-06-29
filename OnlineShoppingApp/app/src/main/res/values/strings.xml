@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">OnlineShoppingApp</string>
     <string name="descriptionProduct"> US Polo </string>
+    <string name="channel_name">Channel One</string>
 </resources>
